@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-mongoose.connect("put your mongodb link here...", {
+mongoose.connect(process.env.NEXT_PUBLIC_DATABASE_CONNECTION, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
