@@ -1,3 +1,3 @@
-export default function () {
-  return <h2>login page</h2>;
-}
+import { Login } from "../src/components";
+
+export default Login;

@@ -1,3 +1,3 @@
-export default function () {
-  return <h2>sign page</h2>;
-}
+import { Signup } from "../src/components";
+
+export default Signup;
