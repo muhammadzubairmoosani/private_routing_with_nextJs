@@ -13,7 +13,7 @@ const InputField = ({ value, onChange }) => {
       <OutlinedInput
         id="outlined-adornment-password"
         value={value}
-        onChange={() => onChange("username")}
+        onChange={onChange("username")}
         labelWidth={85}
         endAdornment={
           <InputAdornment position="end">

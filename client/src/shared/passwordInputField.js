@@ -24,7 +24,7 @@ const PasswordInputField = ({ value, onChange }) => {
         id="outlined-adornment-password"
         type={type}
         value={value}
-        onChange={() => onChange("password")}
+        onChange={onChange("password")}
         labelWidth={85}
         endAdornment={
           <InputAdornment position="end">

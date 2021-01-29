@@ -12,6 +12,7 @@ router.get("/logged-in", (req, res) => {
 
 // user sign-up
 router.post("/signup", (req, res, next) => {
+  console.log(req.body)
   passport.authenticate("local-signup", (error, data, message) => {
     if (error) {
       return res.status(500).json({
