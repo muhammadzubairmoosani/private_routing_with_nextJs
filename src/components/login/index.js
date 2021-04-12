@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = () => {
+const Login = ({ setMessage }) => {
   const classes = useStyles();
   const { push } = useRouter()
 
@@ -35,16 +35,15 @@ const Login = () => {
       if (username === user?.name && password === user?.pass) {
 
         localStorage.setItem("isLoggedIn", true);
-        console.log("login success");
-        // debugger
+        setMessage('login success')
 
         push('/profile')
 
       } else {
-        console.log("username or password is wrong");
+        setMessage("username or password is wrong");
       }
     } else {
-      console.log("sign-up first");
+      setMessage("sign-up first");
     }
   };
 

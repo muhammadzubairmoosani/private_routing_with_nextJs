@@ -26,7 +26,7 @@ const Signup = () => {
     localStorage.setItem("isLoggedIn", false);
 
     push("/login");
-    console.log("sign-up success");
+    setMessage("sign-up success");
   };
 
   return (
