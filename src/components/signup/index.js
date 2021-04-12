@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Signup = () => {
+const Signup = ({ setMessage }) => {
   const { push } = useRouter();
   const classes = useStyles();
 
