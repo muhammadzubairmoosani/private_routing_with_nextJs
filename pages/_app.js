@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <div className={styles.container}>
       < Snackbar
-        open={message}
+        open={!!message}
         autoHideDuration={6000}
         message={message}
         onClose={() => setMessage("")}
