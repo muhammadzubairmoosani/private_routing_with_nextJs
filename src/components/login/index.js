@@ -1,16 +1,10 @@
+import React from "react";
 import { Paper, makeStyles } from "@material-ui/core";
 import { PasswordInputField, InputField, Button } from "../../shared";
+import { getUser } from "../../functions";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
-
-const getUser = () => {
-  if (typeof window !== "undefined") {
-    const name = localStorage.getItem("username");
-    const pass = localStorage.getItem("password");
-    return { name, pass };
-  }
-};
 
 const useStyles = makeStyles((theme) => ({
   paper: {

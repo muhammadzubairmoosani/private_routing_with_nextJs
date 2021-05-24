@@ -1,4 +1,6 @@
+import React, { Fragment } from "react";
 import { useRouter } from "next/router";
+import { Button } from "../../shared";
 
 const Profile = () => {
   const { push } = useRouter();
@@ -9,10 +11,12 @@ const Profile = () => {
   };
 
   return (
-    <>
-      <h2>Wellcome to profile page</h2>
-      <button onClick={_singOut}>sign out</button>
-    </>
+    <Fragment>
+      <h1>Welcome to the profile page</h1>
+      <Button onClick={() => push("/")}>Go to home</Button>
+      Or
+      <Button onClick={_singOut}>Sign out</Button>
+    </Fragment>
   );
 };
 

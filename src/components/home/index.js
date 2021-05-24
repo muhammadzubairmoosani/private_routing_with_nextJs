@@ -1,22 +1,23 @@
-import { Button, Icon } from "@material-ui/core";
+import React, { Fragment } from 'react'
+import { Icon } from "@material-ui/core";
+import { Button } from "../../shared";
 import Link from "next/link";
+import { getUser } from "../../functions";
 
 const Home = () => {
   return (
-    <>
-      <h1>Welcome to Home page</h1>
+    <Fragment>
+      <h1>Authenticated route example with NextJs</h1>
+      <h2>Welcome to the Home page</h2>
 
       <Button
-        variant="contained"
-        color="primary"
-        size="large"
         endIcon={<Icon>send</Icon>}
       >
-        <Link href="/login">
-          Login
+        <Link href={getUser()?.isLoggedIn ? "/profile" : "/login"}>
+          {getUser()?.isLoggedIn ? "Profile" : "Login"}
         </Link>
       </Button>
-    </>
+    </Fragment>
   );
 };
 

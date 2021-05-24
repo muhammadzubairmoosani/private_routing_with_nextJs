@@ -1,3 +1,4 @@
+import React from 'react'
 import { Button, makeStyles, CircularProgress } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -7,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginTop: theme.spacing(2),
-    width: "50%",
+    width: "100%",
   },
   buttonProgress: {
     position: "absolute",
@@ -18,19 +19,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CommonButton = ({ children, onClick, loading }) => {
+const CommonButton = ({ children, onClick, loading, endIcon }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.wrapper}>
       <Button
         className={classes.button}
-        fullWidth
         type="submit"
         onClick={onClick}
         variant="contained"
         color="primary"
         size="large"
+        endIcon={endIcon}
       >
         {children}
       </Button>
