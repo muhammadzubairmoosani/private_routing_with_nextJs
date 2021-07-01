@@ -1,10 +1,13 @@
 import React, { Fragment } from 'react'
 import { Icon } from "@material-ui/core";
 import { Button } from "../../shared";
-import Link from "next/link";
 import { getUser } from "../../functions";
+import { useRouter } from "next/router";
 
 const Home = () => {
+  const { push } = useRouter();
+  const user = getUser();
+
   return (
     <Fragment>
       <h1>Authenticated route example with NextJs</h1>
@@ -12,10 +15,9 @@ const Home = () => {
 
       <Button
         endIcon={<Icon>send</Icon>}
+        onClick={() => push(user?.isLoggedIn ? "/profile" : "/login")}
       >
-        <Link href={getUser()?.isLoggedIn ? "/profile" : "/login"}>
-          {getUser()?.isLoggedIn ? "Profile" : "Login"}
-        </Link>
+        {user?.isLoggedIn ? "Profile" : "Login"}
       </Button>
     </Fragment>
   );

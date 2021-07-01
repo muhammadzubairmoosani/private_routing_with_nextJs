@@ -39,7 +39,7 @@ const Signup = ({ setMessage }) => {
         <PasswordInputField name="password" />
         <br />
 
-        <Button>Sgin-up</Button>
+        <Button>Sign-up</Button>
         <br />
         <br />
         <Link href="/login">
