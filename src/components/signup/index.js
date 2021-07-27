@@ -1,5 +1,7 @@
+import React, { createRef } from "react";
 import { Paper, makeStyles } from "@material-ui/core";
-import { PasswordInputField, InputField, Button } from "../../shared";
+import { PasswordInputField, InputField, Button, GoogleReCaptcha } from "../../shared";
+import { reCaptchaTokenIsValid } from "../../functions";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -14,9 +16,20 @@ const useStyles = makeStyles((theme) => ({
 const Signup = ({ setMessage }) => {
   const { push } = useRouter();
   const classes = useStyles();
+  const recaptchaRef = createRef()
 
-  const _onSubmit = (event) => {
+  const _onSubmit = async (event) => {
     event.preventDefault();
+
+    const token = await recaptchaRef.current.executeAsync()
+    
+    recaptchaRef.current.reset()
+    
+    const boolean = await reCaptchaTokenIsValid(token)
+    
+    if (!boolean) {
+      return setMessage('Failed to validate reCAPTCHA.')
+    }
 
     let username = event.target.elements.username.value;
     let password = event.target.elements.password.value;
@@ -46,6 +59,7 @@ const Signup = ({ setMessage }) => {
           Already have an account!
         </Link>
       </Paper>
+      <GoogleReCaptcha ref={recaptchaRef} />
     </form>
   );
 };

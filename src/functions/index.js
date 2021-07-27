@@ -1,3 +1,5 @@
+import { SECRET } from '../utils/constant'
+
 export const getUser = () => {
     if (typeof window !== "undefined") {
         let name = localStorage.getItem("username");
@@ -8,3 +10,12 @@ export const getUser = () => {
         return ({ name, pass, isLoggedIn })
     }
 };
+
+export const reCaptchaTokenIsValid = (token) => {
+    const api = `https://www.google.com/recaptcha/api/siteverify?secret=${SECRET}&response=${token}`
+
+    return fetch(api, { method: 'POST' })
+        .then(res => res.json())
+        .then(json => json.success)
+        .catch(err => err)
+}
